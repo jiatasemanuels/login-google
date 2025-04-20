@@ -2,10 +2,80 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Login con Google</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="./index.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .carousel-video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .carousel-video.active {
+      opacity: 1;
+      z-index: 10;
+    }
+    .carousel-text {
+      z-index: 20;
+    }
+  </style>
 </head>
-<body>
-  <h1>Iniciar sesión con Google</h1>
-  <a href="/auth/google">Iniciar sesión</a>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex items-center justify-center">
+
+  <div class="w-full h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <!-- Carrusel con video -->
+    <div class="relative w-full md:w-1/2 overflow-hidden flex items-center justify-center bg-black">
+      <video class="carousel-video active" autoplay muted loop playsinline>
+        <source src="/video1.mp4" type="video/mp4">
+      </video>
+      <video class="carousel-video" autoplay muted loop playsinline>
+        <source src="/video2.mp4" type="video/mp4">
+      </video>
+      <video class="carousel-video" autoplay muted loop playsinline>
+        <source src="/video3.mp4" type="video/mp4">
+      </video>
+
+      <div class="absolute text-white text-center carousel-text p-6">
+        <h2 class="text-3xl font-bold mb-4 drop-shadow-md">¡Bienvenido a nuestra plataforma!</h2>
+        <p class="text-lg drop-shadow">La forma más segura y rápida de acceder.</p>
+      </div>
+    </div>
+
+    <!-- Sección de inicio de sesión -->
+    <div class="w-full md:w-1/2 bg-white flex items-center justify-center p-10">
+      <div class="max-w-md w-full text-center space-y-8 bg-gray-100 p-10 rounded-2xl shadow-xl border border-gray-300">
+        <h1 class="text-4xl font-extrabold text-gray-800">Iniciar Sesión</h1>
+        <p class="text-gray-600">Conéctate fácilmente con tu cuenta de Google</p>
+        <!-- Aquí cambiamos el href para invocar tu ruta de Passport -->
+        <a href="/auth/google"
+           class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-lg transition w-full">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+               class="w-6 h-6 mr-3" alt="Google logo">
+          Iniciar sesión con Google
+        </a>
+        <p class="text-xs text-gray-500 mt-4">
+          Al continuar, aceptas nuestros
+          <a href="#" class="underline">Términos</a> y
+          <a href="#" class="underline">Política de privacidad</a>.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const videos = document.querySelectorAll('.carousel-video');
+    let current = 0;
+    setInterval(() => {
+      videos[current].classList.remove('active');
+      current = (current + 1) % videos.length;
+      videos[current].classList.add('active');
+    }, 6000);
+  </script>
 </body>
 </html>
