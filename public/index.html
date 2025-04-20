@@ -28,30 +28,21 @@
   </style>
 </head>
 <body class="bg-gray-100 text-gray-900 min-h-screen flex items-center justify-center">
-
-  <div class="w-full h-screen flex flex-col md:flex-row overflow-hidden">
-
-    <!-- Carrusel con VIDEOS -->
     <div class="relative w-full md:w-1/2 overflow-hidden flex items-center justify-center bg-black">
-      <video class="carousel-video active" autoplay muted loop playsinline>
-        <source src="/video1.mp4" type="video/mp4" />
-      </video>
-      <video class="carousel-video" autoplay muted loop playsinline>
-        <source src="/video2.mp4" type="video/mp4" />
-      </video>
-      <video class="carousel-video" autoplay muted loop playsinline>
-        <source src="/video3.mp4" type="video/mp4" />
-      </video>
-
-      <div class="absolute text-white text-center carousel-text p-6">
-        <h2 class="text-3xl font-bold mb-4 drop-shadow-md">
-          ¡Bienvenido a nuestra plataforma!
-        </h2>
-        <p class="text-lg drop-shadow">
-          La forma más segura y rápida de acceder.
-        </p>
+        <img src="/car.gif" class="carousel-video active object-cover w-full h-full" alt="GIF 1" />
+        <img src="/car2.gif" class="carousel-video object-cover w-full h-full" alt="GIF 2" />
+        <img src="/car3.gif" class="carousel-video object-cover w-full h-full" alt="GIF 3" />
+      
+        <div class="absolute text-white text-center carousel-text p-6">
+          <h2 class="text-3xl font-bold mb-4 drop-shadow-md">
+            ¡Bienvenido a nuestra plataforma!
+          </h2>
+          <p class="text-lg drop-shadow">
+            La forma más segura y rápida de acceder.
+          </p>
+        </div>
       </div>
-    </div>
+      
 
     <!-- Sección de inicio de sesión -->
     <div class="w-full md:w-1/2 flex items-center justify-center p-4 sm:p-10">
