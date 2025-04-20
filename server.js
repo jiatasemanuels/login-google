@@ -2,10 +2,14 @@ const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
 const dotenv = require('dotenv');
+const path = require('path');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 dotenv.config();
 const app = express();
+
+// Servir archivos estáticos desde carpeta "public"
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
   secret: 'supersecreto',
@@ -32,8 +36,9 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
+// Mostrar index.html con estilo y videos
 app.get('/', (req, res) => {
-  res.send('<a href="/auth/google">Iniciar sesión con Google</a>');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.get('/auth/google',
