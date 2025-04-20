@@ -1,11 +1,12 @@
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar Sesión</title>
+  <!-- Tu CSS personalizado -->
   <link rel="stylesheet" href="/index.css">
+  <!-- Tailwind para utilidades rápidas -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     .carousel-video {
@@ -52,7 +53,7 @@
       <div class="max-w-md w-full text-center space-y-8 bg-gray-100 p-10 rounded-2xl shadow-xl border border-gray-300">
         <h1 class="text-4xl font-extrabold text-gray-800">Iniciar Sesión</h1>
         <p class="text-gray-600">Conéctate fácilmente con tu cuenta de Google</p>
-        <!-- Aquí cambiamos el href para invocar tu ruta de Passport -->
+        <!-- Aquí apuntamos al endpoint de Passport -->
         <a href="/auth/google"
            class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-lg transition w-full">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
