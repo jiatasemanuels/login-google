@@ -1,189 +1,126 @@
+<!-- public/dashboard.html -->
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Speed Auto Service</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <title>AutoServicios Speed - Dashboard</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1A4580",
+              secondary: "#48B9E1",
+              accent: "#900417",
+              light: "#8096B1",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Boxicons -->
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
   </head>
-  <body class="bg-[#F8F9FB] text-[#1A4580]">
-    <!-- Sección: Contacto -->
-    <section class="w-full py-12 md:py-24 lg:py-32 bg-white">
+
+  <body class="flex min-h-screen flex-col bg-white text-[#1A4580]">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full border-b-[5px] border-accent bg-white">
+      <div class="container mx-auto flex h-20 items-center justify-between px-4">
+        <div class="flex items-center gap-2">
+          <div class="rounded-full bg-primary p-2">
+            <i class="bx bxs-car text-white text-2xl"></i>
+          </div>
+          <span class="text-2xl font-bold">AutoServicios Speed</span>
+        </div>
+
+        <!-- Menu -->
+        <nav class="hidden md:flex gap-6">
+          <a href="#servicios" class="font-medium hover:text-secondary transition-colors">Servicios</a>
+          <a href="#location" class="font-medium hover:text-secondary transition-colors">Ubicación</a>
+          <a href="#about" class="font-medium hover:text-secondary transition-colors">Nosotros</a>
+          <a href="#testimonials" class="font-medium hover:text-secondary transition-colors">Testimonios</a>
+          <a href="#contact" class="font-medium hover:text-secondary transition-colors">Contacto</a>
+          <a href="/admin" class="font-medium hover:text-secondary transition-colors">Admin</a>
+        </nav>
+
+        <!-- Logout -->
+        <a
+          href="/logout"
+          class="rounded-[30px] bg-primary text-white hover:bg-secondary transition-colors px-4 py-2 text-sm font-medium"
+        >
+          Cerrar Sesión
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-light/10 to-white">
       <div class="container mx-auto px-4 md:px-6">
-        <div class="grid gap-6 lg:grid-cols-3 lg:gap-12">
-          <!-- Mapa -->
-          <div class="lg:col-span-2">
-            <div
-              class="relative overflow-hidden rounded-[30px] border-[5px] border-[#900417] h-[400px] shadow-lg"
-            >
-              <img
-                src="https://motor.elpais.com/wp-content/uploads/2022/01/google-maps-22.jpg"
-                alt="Mapa de ubicación"
-                class="w-full h-full object-cover"
-              />
-              <div
-                class="absolute top-4 left-4 bg-white p-3 rounded-[20px] shadow-md border-2 border-[#900417]"
-              >
-                <i class="bx bx-map text-[#900417] text-2xl"></i>
-              </div>
+        <div class="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+          <div class="space-y-4">
+            <div class="inline-block rounded-lg bg-secondary/20 px-3 py-1 text-sm font-medium">
+              Bienvenido al panel de usuario
+            </div>
+            <h1 class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+              Servicio Automotriz <span class="text-accent">Profesional</span> y Confiable
+            </h1>
+            <p class="text-gray-600 md:text-xl/relaxed">
+              Gracias por confiar en nosotros. Desde aquí podrás acceder a tus servicios y agendar tus citas fácilmente.
+            </p>
+            <div class="flex flex-col gap-2 min-[400px]:flex-row">
+              <a href="servicios.html" class="rounded-[30px] bg-primary text-white hover:bg-secondary transition-colors px-4 py-2">
+                Ver Servicios
+              </a>
+              <a href="#contact" class="rounded-[30px] border-accent border-[5px] text-primary hover:bg-secondary hover:text-white hover:border-secondary transition-colors px-4 py-2">
+                Agendar Cita
+              </a>
             </div>
           </div>
-
-          <!-- Información de contacto -->
-          <div class="space-y-6">
-            <div
-              class="rounded-[30px] border-[5px] border-[#900417] bg-white p-6 shadow-lg transform transition-transform hover:scale-[1.02] duration-300"
-            >
-              <h3 class="text-xl font-bold text-[#1A4580] mb-4">
-                Información de Contacto
-              </h3>
-              <div class="space-y-4">
-                <div class="flex items-center space-x-3">
-                  <div class="rounded-full bg-[#48B9E1]/20 p-2">
-                    <i class="bx bx-map text-[#1A4580] text-xl"></i>
-                  </div>
-                  <div>
-                    <p class="font-medium text-[#1A4580]">Dirección</p>
-                    <p class="text-gray-600">
-                      123 Calle Principal, Ciudad, País
-                    </p>
-                  </div>
-                </div>
-                <div class="flex items-center space-x-3">
-                  <div class="rounded-full bg-[#48B9E1]/20 p-2">
-                    <i class="bx bx-phone text-[#1A4580] text-xl"></i>
-                  </div>
-                  <div>
-                    <p class="font-medium text-[#1A4580]">Teléfono</p>
-                    <p class="text-gray-600">+123 456 7890</p>
-                  </div>
-                </div>
-                <div class="flex items-center space-x-3">
-                  <div class="rounded-full bg-[#48B9E1]/20 p-2">
-                    <i class="bx bx-envelope text-[#1A4580] text-xl"></i>
-                  </div>
-                  <div>
-                    <p class="font-medium text-[#1A4580]">Email</p>
-                    <p class="text-gray-600">info@speedautoservices.com</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="rounded-[30px] border-[5px] border-[#900417] bg-white p-6 shadow-lg transform transition-transform hover:scale-[1.02] duration-300"
-            >
-              <div class="flex items-center space-x-3 mb-4">
-                <div class="rounded-full bg-[#48B9E1]/20 p-2">
-                  <i class="bx bx-time text-[#1A4580] text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-[#1A4580]">
-                  Horario de Atención
-                </h3>
-              </div>
-              <div class="space-y-2">
-                <div
-                  class="flex justify-between items-center py-2 border-b border-dashed border-[#8096B1]/30"
-                >
-                  <p class="font-medium text-[#1A4580]">Lunes - Viernes</p>
-                  <p class="text-gray-600">8:00 AM - 6:00 PM</p>
-                </div>
-                <div
-                  class="flex justify-between items-center py-2 border-b border-dashed border-[#8096B1]/30"
-                >
-                  <p class="font-medium text-[#1A4580]">Sábado</p>
-                  <p class="text-gray-600">9:00 AM - 4:00 PM</p>
-                </div>
-                <div class="flex justify-between items-center py-2">
-                  <p class="font-medium text-[#1A4580]">Domingo</p>
-                  <p class="text-gray-600">Cerrado</p>
-                </div>
-              </div>
-            </div>
-
-            <button
-              class="w-full rounded-[30px] bg-[#1A4580] text-white hover:bg-[#48B9E1] transition-colors px-4 py-2"
-            >
-              Cómo Llegar
-            </button>
+          <div class="relative">
+            <div class="absolute -top-4 -left-4 w-24 h-24 bg-secondary/20 rounded-full z-0"></div>
+            <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-accent/10 rounded-full z-0"></div>
+            <img
+              src="https://png.pngtree.com/png-clipart/20231124/original/pngtree-blue-sedan-car-png-image_13701255.png"
+              alt="Auto Service"
+              class="relative z-10 mx-auto aspect-video overflow-hidden rounded-[30px] border-[5px] border-accent object-cover shadow-lg transform transition-transform hover:scale-[1.02] duration-300"
+            />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Sección de Servicios -->
-    <section
-      id="services"
-      class="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-white to-[#8096B1]/10"
-    >
+    <!-- Ubicación -->
+    <section id="location" class="w-full py-12 md:py-24 lg:py-32 bg-white">
       <div class="container mx-auto px-4 md:px-6">
-        <div class="flex flex-col items-center justify-center space-y-4 text-center">
-          <div class="inline-block rounded-full bg-[#1A4580] p-2">
-            <i class="bx bxs-car text-white text-2xl"></i>
+        <div class="flex flex-col items-center justify-center space-y-4 text-center mb-10">
+          <div class="inline-block rounded-full bg-primary p-2">
+            <i class="bx bx-map text-white text-2xl"></i>
           </div>
-          <h2 class="text-3xl font-bold tracking-tighter text-[#1A4580] sm:text-4xl md:text-5xl">
-            Nuestros Servicios
+          <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            Nuestra Ubicación
           </h2>
           <p class="mx-auto max-w-[700px] text-gray-600 md:text-xl/relaxed">
-            Ofrecemos una amplia gama de servicios automotrices para mantener tu vehículo en óptimas condiciones.
+            Estamos estratégicamente ubicados para brindarte el mejor servicio. ¡Visítanos hoy!
           </p>
         </div>
-
-        <div class="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
-          <div class="rounded-[30px] border-[5px] border-[#900417] bg-white p-6 shadow-md">
-            <div class="flex items-center justify-center mb-4">
-              <i class="bx bxs-car-mechanic text-5xl text-[#1A4580]"></i>
-            </div>
-            <h3 class="text-xl font-bold text-[#1A4580] text-center mb-2">Mecánica General</h3>
-            <p class="text-gray-600 text-center">Diagnóstico, reparación y mantenimiento preventivo.</p>
-          </div>
-
-          <div class="rounded-[30px] border-[5px] border-[#900417] bg-white p-6 shadow-md">
-            <div class="flex items-center justify-center mb-4">
-              <i class="bx bx-tire text-5xl text-[#1A4580]"></i>
-            </div>
-            <h3 class="text-xl font-bold text-[#1A4580] text-center mb-2">Llantas</h3>
-            <p class="text-gray-600 text-center">Venta, instalación, balanceo y alineación.</p>
-          </div>
-
-          <div class="rounded-[30px] border-[5px] border-[#900417] bg-white p-6 shadow-md">
-            <div class="flex items-center justify-center mb-4">
-              <i class="bx bx-battery text-5xl text-[#1A4580]"></i>
-            </div>
-            <h3 class="text-xl font-bold text-[#1A4580] text-center mb-2">Baterías</h3>
-            <p class="text-gray-600 text-center">Revisión, carga y reemplazo de baterías.</p>
-          </div>
-
-          <div class="rounded-[30px] border-[5px] border-[#900417] bg-white p-6 shadow-md">
-            <div class="flex items-center justify-center mb-4">
-              <i class="bx bx-droplet text-5xl text-[#1A4580]"></i>
-            </div>
-            <h3 class="text-xl font-bold text-[#1A4580] text-center mb-2">Cambio de Aceite</h3>
-            <p class="text-gray-600 text-center">Servicio rápido y profesional para tu motor.</p>
-          </div>
-
-          <div class="rounded-[30px] border-[5px] border-[#900417] bg-white p-6 shadow-md">
-            <div class="flex items-center justify-center mb-4">
-              <i class="bx bx-car-wash text-5xl text-[#1A4580]"></i>
-            </div>
-            <h3 class="text-xl font-bold text-[#1A4580] text-center mb-2">Lavado de Autos</h3>
-            <p class="text-gray-600 text-center">Interior, exterior, detallado y más.</p>
-          </div>
-
-          <div class="rounded-[30px] border-[5px] border-[#900417] bg-white p-6 shadow-md">
-            <div class="flex items-center justify-center mb-4">
-              <i class="bx bx-car-garage text-5xl text-[#1A4580]"></i>
-            </div>
-            <h3 class="text-xl font-bold text-[#1A4580] text-center mb-2">Inspección Vehicular</h3>
-            <p class="text-gray-600 text-center">Revisión completa para seguridad y rendimiento.</p>
-          </div>
+        <!-- Puedes insertar aquí el iframe de Google Maps o una imagen del mapa -->
+        <div class="rounded-[30px] overflow-hidden border-[5px] border-light shadow-lg">
+          <iframe
+            class="w-full h-[400px]"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d..."
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </div>
     </section>
