@@ -28,7 +28,6 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
-
   <body class="bg-[#8096B1]/5">
     <div class="flex min-h-screen">
       <!-- Sidebar -->
@@ -122,8 +121,11 @@
         </div>
       </aside>
 
-      <!-- Overlay móvil -->
-      <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
+      <!-- Overlay para móvil -->
+      <div
+        id="sidebar-overlay"
+        class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"
+      ></div>
 
       <!-- Contenido principal -->
       <div class="flex-1 flex flex-col">
@@ -147,7 +149,7 @@
         <!-- Main -->
         <main class="flex-1 p-6 overflow-auto">
           <div class="space-y-6">
-            <!-- Título y descripción -->
+            <!-- Título -->
             <div>
               <h2 class="text-2xl font-bold tracking-tight text-[#1A4580]">
                 Dashboard
@@ -157,16 +159,25 @@
               </p>
             </div>
 
-            <!-- Tabs y botón Descargar -->
+            <!-- Tabs + Descargar -->
             <div class="flex items-center justify-between">
               <div class="bg-[#8096B1]/20 rounded-lg p-1 flex">
-                <button id="tab-diario" class="tab px-4 py-2 rounded-md bg-[#1A4580] text-white">
+                <button
+                  id="tab-diario"
+                  class="px-4 py-2 rounded-md bg-[#1A4580] text-white"
+                >
                   Diario
                 </button>
-                <button id="tab-semanal" class="tab px-4 py-2 rounded-md text-[#1A4580]">
+                <button
+                  id="tab-semanal"
+                  class="px-4 py-2 rounded-md text-[#1A4580]"
+                >
                   Semanal
                 </button>
-                <button id="tab-mensual" class="tab px-4 py-2 rounded-md text-[#1A4580]">
+                <button
+                  id="tab-mensual"
+                  class="px-4 py-2 rounded-md text-[#1A4580]"
+                >
                   Mensual
                 </button>
               </div>
@@ -177,17 +188,23 @@
               </button>
             </div>
 
-            <!-- Stats Cards -->
+            <!-- Estadísticas -->
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+              <div
+                class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg"
+              >
                 <div class="flex justify-between pb-2">
-                  <p class="text-sm font-medium text-[#1A4580]">Ventas Totales</p>
+                  <p class="text-sm font-medium text-[#1A4580]">
+                    Ventas Totales
+                  </p>
                   <i class="bx bx-dollar-circle text-[#1A4580] text-xl"></i>
                 </div>
                 <div class="text-2xl font-bold text-[#1A4580]">$2,350</div>
                 <p class="text-xs text-gray-500">+18% desde ayer</p>
               </div>
-              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+              <div
+                class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg"
+              >
                 <div class="flex justify-between pb-2">
                   <p class="text-sm font-medium text-[#1A4580]">Órdenes</p>
                   <i class="bx bx-credit-card text-[#1A4580] text-xl"></i>
@@ -195,17 +212,25 @@
                 <div class="text-2xl font-bold text-[#1A4580]">+12</div>
                 <p class="text-xs text-gray-500">+8% desde ayer</p>
               </div>
-              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+              <div
+                class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg"
+              >
                 <div class="flex justify-between pb-2">
-                  <p class="text-sm font-medium text-[#1A4580]">Clientes Nuevos</p>
+                  <p class="text-sm font-medium text-[#1A4580]">
+                    Clientes Nuevos
+                  </p>
                   <i class="bx bx-user-plus text-[#1A4580] text-xl"></i>
                 </div>
                 <div class="text-2xl font-bold text-[#1A4580]">+5</div>
                 <p class="text-xs text-gray-500">+12% desde ayer</p>
               </div>
-              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+              <div
+                class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg"
+              >
                 <div class="flex justify-between pb-2">
-                  <p class="text-sm font-medium text-[#1A4580]">Ticket Promedio</p>
+                  <p class="text-sm font-medium text-[#1A4580]">
+                    Ticket Promedio
+                  </p>
                   <i class="bx bx-pie-chart-alt text-[#1A4580] text-xl"></i>
                 </div>
                 <div class="text-2xl font-bold text-[#1A4580]">$195</div>
@@ -213,212 +238,171 @@
               </div>
             </div>
 
-            <!-- Charts -->
+            <!-- Gráficas -->
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-              <div class="col-span-4 border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
-                <h3 class="text-lg font-bold text-[#1A4580] mb-4">Ventas por Hora</h3>
+              <div
+                class="col-span-4 border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg"
+              >
+                <h3 class="text-lg font-bold text-[#1A4580] mb-4">
+                  Ventas por Hora
+                </h3>
                 <div class="h-[300px]">
                   <canvas id="salesChart"></canvas>
                 </div>
               </div>
-              <div class="col-span-3 border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
-                <h3 class="text-lg font-bold text-[#1A4580] mb-2">Ventas por Servicio</h3>
-                <p class="text-sm text-gray-500 mb-4">Distribución de ventas por tipo de servicio</p>
+              <div
+                class="col-span-3 border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg"
+              >
+                <h3 class="text-lg font-bold text-[#1A4580] mb-2">
+                  Ventas por Servicio
+                </h3>
+                <p class="text-sm text-gray-500 mb-4">
+                  Distribución de ventas por tipo de servicio
+                </p>
                 <div class="h-[300px]">
                   <canvas id="serviceChart"></canvas>
                 </div>
               </div>
             </div>
 
-            <!-- Additional Info -->
+            <!-- Info Adicional -->
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              <!-- Servicios Más Vendidos -->
-              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
-                <h3 class="text-lg font-bold text-[#1A4580] mb-4">Servicios Más Vendidos</h3>
-                <div class="space-y-4">
-                  <div class="flex items-center">
-                    <div class="w-2 h-2 rounded-full bg-[#1A4580] mr-2"></div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">Cambio de Aceite</div>
-                      <div class="text-xs text-gray-500">Mecánica Automotriz</div>
-                    </div>
-                    <div class="font-medium">$45</div>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-2 h-2 rounded-full bg-[#48B9E1] mr-2"></div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">Cambio de Llantas</div>
-                      <div class="text-xs text-gray-500">Llantas</div>
-                    </div>
-                    <div class="font-medium">$320</div>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-2 h-2 rounded-full bg-[#900417] mr-2"></div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">Instalación de Batería</div>
-                      <div class="text-xs text-gray-500">Baterías</div>
-                    </div>
-                    <div class="font-medium">$180</div>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-2 h-2 rounded-full bg-[#8096B1] mr-2"></div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">Cambio de Plumillas</div>
-                      <div class="text-xs text-gray-500">Plumillas</div>
-                    </div>
-                    <div class="font-medium">$35</div>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-2 h-2 rounded-full bg-[#2A6BB4] mr-2"></div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">Instalación de GPS</div>
-                      <div class="text-xs text-gray-500">GPS</div>
-                    </div>
-                    <div class="font-medium">$120</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Clientes Recientes -->
-              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
-                <h3 class="text-lg font-bold text-[#1A4580] mb-4">Clientes Recientes</h3>
-                <div class="space-y-4">
-                  <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-[#1A4580] mr-3 flex items-center justify-center text-white font-bold">JD</div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">Juan Díaz</div>
-                      <div class="text-xs text-gray-500">Mecánica Automotriz</div>
-                    </div>
-                    <div class="font-medium">$150</div>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-[#48B9E1] mr-3 flex items-center justify-center text-white font-bold">MR</div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">María Rodríguez</div>
-                      <div class="text-xs text-gray-500">Llantas</div>
-                    </div>
-                    <div class="font-medium">$280</div>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-[#900417] mr-3 flex items-center justify-center text-white font-bold">CL</div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">Carlos López</div>
-                      <div class="text-xs text-gray-500">Baterías</div>
-                    </div>
-                    <div class="font-medium">$95</div>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-[#8096B1] mr-3 flex items-center justify-center text-white font-bold">AG</div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">Ana González</div>
-                      <div class="text-xs text-gray-500">GPS</div>
-                    </div>
-                    <div class="font-medium">$210</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Inventario Bajo -->
-              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
-                <h3 class="text-lg font-bold text-[#1A4580] mb-4">Inventario Bajo</h3>
-                <div class="space-y-4">
-                  <div class="flex items-center">
-                    <div class="w-2 h-2 rounded-full bg-[#900417] mr-2"></div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">Aceite Sintético 5W-30</div>
-                      <div class="text-xs text-gray-500">5 unidades restantes</div>
-                    </div>
-                    <button class="rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-2 py-1 text-xs">Ordenar</button>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-2 h-2 rounded-full bg-[#900417] mr-2"></div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">Batería 12V</div>
-                      <div class="text-xs text-gray-500">3 unidades restantes</div>
-                    </div>
-                    <button class="rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-2 py-1 text-xs">Ordenar</button>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-2 h-2 rounded-full bg-[#900417] mr-2"></div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">Plumillas 22"</div>
-                      <div class="text-xs text-gray-500">4 unidades restantes</div>
-                    </div>
-                    <button class="rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-2 py-1 text-xs">Ordenar</button>
-                  </div>
-                  <div class="flex items-center">
-                    <div class="w-2 h-2 rounded-full bg-[#900417] mr-2"></div>
-                    <div class="flex-1">
-                      <div class="text-sm font-medium">Filtro de Aire</div>
-                      <div class="text-xs text-gray-500">6 unidades restantes</div>
-                    </div>
-                    <button class="rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-2 py-1 text-xs">Ordenar</button>
-                  </div>
-                </div>
-              </div>
+              <!-- ... aquí irían tus cuadros de "Servicios Más Vendidos", "Clientes Recientes", "Inventario Bajo" tal como en tu snippet -->
             </div>
           </div>
         </main>
       </div>
     </div>
 
-    <!-- Chart.js init -->
+    <!-- Script: Charts dinámicos por Tab -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Sales Chart
-        const salesCtx = document.getElementById("salesChart")?.getContext("2d");
-        if (salesCtx) {
-          new Chart(salesCtx, {
-            type: "line",
-            data: {
-              labels: ["8AM", "10AM", "12PM", "2PM", "4PM", "6PM"],
-              datasets: [{
-                label: "Ventas por Hora",
-                data: [120,240,380,290,340,180],
+      let salesChart, serviceChart;
+      const dataSets = {
+        diario: {
+          labels: ["8AM", "10AM", "12PM", "2PM", "4PM", "6PM"],
+          data: [120, 240, 380, 290, 340, 180],
+        },
+        semanal: {
+          labels: ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+          data: [600, 700, 800, 750, 900, 850, 780],
+        },
+        mensual: {
+          labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun"],
+          data: [2000, 2300, 1800, 2500, 2200, 2100],
+        },
+      };
+
+      function crearGraficos(tipo) {
+        const ctxSales = document.getElementById("salesChart").getContext("2d");
+        const ctxService = document
+          .getElementById("serviceChart")
+          .getContext("2d");
+        if (salesChart) salesChart.destroy();
+        if (serviceChart) serviceChart.destroy();
+
+        salesChart = new Chart(ctxSales, {
+          type: "line",
+          data: {
+            labels: dataSets[tipo].labels,
+            datasets: [
+              {
+                label: "Ventas",
+                data: dataSets[tipo].data,
                 backgroundColor: "rgba(72,185,225,0.2)",
                 borderColor: "#1A4580",
-                borderWidth:2,
-                tension:0.3,
-                pointBackgroundColor:"#1A4580",
-                pointRadius:4
-              }]
+                borderWidth: 2,
+                tension: 0.3,
+                fill: true,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  callback: (v) => "$" + v,
+                },
+              },
             },
-            options: {
-              responsive:true,
-              maintainAspectRatio:false,
-              scales: { y:{ beginAtZero:true, ticks:{ callback: v=>"$"+v } } },
-              plugins:{ tooltip:{ callbacks:{ label: ctx=>"$"+ctx.raw } } }
-            }
-          });
-        }
+            plugins: {
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => "$" + ctx.raw,
+                },
+              },
+            },
+          },
+        });
 
-        // Service Chart
-        const serviceCtx = document.getElementById("serviceChart")?.getContext("2d");
-        if (serviceCtx) {
-          new Chart(serviceCtx, {
-            type: "pie",
-            data: {
-              labels: ["Mecánica","Llantas","Baterías","Plumillas","GPS"],
-              datasets:[{
-                data:[35,25,20,10,10],
-                backgroundColor:["#1A4580","#48B9E1","#900417","#8096B1","#2A6BB4"],
-                borderWidth:1
-              }]
+        serviceChart = new Chart(ctxService, {
+          type: "pie",
+          data: {
+            labels: ["Mecánica", "Llantas", "Baterías", "Plumillas", "GPS"],
+            datasets: [
+              {
+                data: [35, 25, 20, 10, 10],
+                backgroundColor: [
+                  "#1A4580",
+                  "#48B9E1",
+                  "#900417",
+                  "#8096B1",
+                  "#2A6BB4",
+                ],
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: "bottom" },
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => ctx.label + ": " + ctx.raw + "%",
+                },
+              },
             },
-            options:{
-              responsive:true,
-              maintainAspectRatio:false,
-              plugins:{
-                legend:{ position:"bottom" },
-                tooltip:{ callbacks:{ label: ctx=>ctx.label+": "+ctx.raw+"%" } }
-              }
-            }
-          });
-        }
+          },
+        });
+      }
+
+      function activarTab(tipo) {
+        ["diario", "semanal", "mensual"].forEach((t) => {
+          const btn = document.getElementById("tab-" + t);
+          btn.classList.remove("bg-[#1A4580]", "text-white");
+        });
+        const active = document.getElementById("tab-" + tipo);
+        active.classList.add("bg-[#1A4580]", "text-white");
+      }
+
+      document
+        .getElementById("tab-diario")
+        .addEventListener("click", () => {
+          crearGraficos("diario");
+          activarTab("diario");
+        });
+      document
+        .getElementById("tab-semanal")
+        .addEventListener("click", () => {
+          crearGraficos("semanal");
+          activarTab("semanal");
+        });
+      document
+        .getElementById("tab-mensual")
+        .addEventListener("click", () => {
+          crearGraficos("mensual");
+          activarTab("mensual");
+        });
+
+      window.addEventListener("DOMContentLoaded", () => {
+        crearGraficos("diario");
       });
     </script>
 
-    <!-- Sidebar Toggle Script -->
+    <!-- Sidebar Toggle -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const sidebar = document.getElementById("sidebar");
@@ -437,9 +421,9 @@
           document.body.classList.remove("overflow-hidden");
         };
 
-        openBtn?.addEventListener("click", open);
-        closeBtn?.addEventListener("click", close);
-        overlay?.addEventListener("click", close);
+        openBtn.addEventListener("click", open);
+        closeBtn.addEventListener("click", close);
+        overlay.addEventListener("click", close);
         window.addEventListener("resize", () => {
           if (window.innerWidth >= 768) close();
         });
