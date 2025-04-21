@@ -1,152 +1,449 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body class="bg-gray-100 text-gray-800">
-  <main class="flex-1 p-6">
-    <div class="space-y-6">
-      <!-- Header -->
-      <div class="flex items-center justify-between">
-        <h1 class="text-3xl font-bold">Dashboard</h1>
-        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Descargar</button>
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Autoservicios Speed</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1A4580",
+              secondary: "#48B9E1",
+              accent: "#900417",
+              light: "#8096B1",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
 
-      <!-- Tabs -->
-      <div class="flex gap-2">
-        <button onclick="cambiarGrafico('diario')" class="tab bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300">Diario</button>
-        <button onclick="cambiarGrafico('semanal')" class="tab bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300">Semanal</button>
-        <button onclick="cambiarGrafico('mensual')" class="tab bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300">Mensual</button>
-      </div>
-
-      <!-- Tarjetas -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white shadow rounded-lg p-4">
-          <p class="text-sm text-gray-500">Total Ventas</p>
-          <p class="text-2xl font-semibold">$12,345</p>
+  <body class="bg-[#8096B1]/5">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside
+        id="sidebar"
+        class="fixed inset-0 z-40 w-64 border-r-[5px] border-[#900417] bg-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out md:relative md:block"
+      >
+        <div
+          class="h-20 border-b border-[#900417] flex items-center justify-between px-4"
+        >
+          <span class="text-xl font-bold text-[#1A4580]">Speed Admin</span>
+          <button id="close-sidebar" class="md:hidden text-[#1A4580]">
+            <i class="bx bx-x text-2xl"></i>
+          </button>
         </div>
-        <div class="bg-white shadow rounded-lg p-4">
-          <p class="text-sm text-gray-500">Clientes Nuevos</p>
-          <p class="text-2xl font-semibold">54</p>
-        </div>
-        <div class="bg-white shadow rounded-lg p-4">
-          <p class="text-sm text-gray-500">Órdenes Pendientes</p>
-          <p class="text-2xl font-semibold">7</p>
-        </div>
-        <div class="bg-white shadow rounded-lg p-4">
-          <p class="text-sm text-gray-500">Ingresos</p>
-          <p class="text-2xl font-semibold">$8,764</p>
-        </div>
-      </div>
-
-      <!-- Gráficas -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-white shadow rounded-lg p-4">
-          <h2 class="text-lg font-semibold mb-2">Gráfico de Ventas</h2>
-          <canvas id="lineChart" width="400" height="200"></canvas>
-        </div>
-        <div class="bg-white shadow rounded-lg p-4">
-          <h2 class="text-lg font-semibold mb-2">Distribución</h2>
-          <canvas id="pieChart" width="400" height="200"></canvas>
-        </div>
-      </div>
-
-      <!-- Secciones -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white shadow rounded-lg p-4">
-          <h3 class="text-lg font-semibold mb-2">Servicios Más Vendidos</h3>
-          <ul class="space-y-1 text-gray-700 text-sm">
-            <li>Lavado completo</li>
-            <li>Cambio de aceite</li>
-            <li>Revisión general</li>
+        <nav class="p-4">
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="#"
+                class="flex items-center gap-2 p-2 rounded-md bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-home text-xl"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-cart text-xl"></i>
+                <span>Órdenes</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-user text-xl"></i>
+                <span>Clientes</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-package text-xl"></i>
+                <span>Productos</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-bar-chart-alt-2 text-xl"></i>
+                <span>Analíticas</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-calendar text-xl"></i>
+                <span>Calendario</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-cog text-xl"></i>
+                <span>Configuración</span>
+              </a>
+            </li>
           </ul>
+        </nav>
+        <div class="p-4 border-t border-[#900417] mt-auto">
+          <a href="index.html">
+            <button
+              class="w-full rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-4 py-2"
+            >
+              Volver al Sitio
+            </button>
+          </a>
         </div>
-        <div class="bg-white shadow rounded-lg p-4">
-          <h3 class="text-lg font-semibold mb-2">Clientes Recientes</h3>
-          <ul class="space-y-1 text-gray-700 text-sm">
-            <li>Juan Pérez</li>
-            <li>Lucía Gómez</li>
-            <li>Carlos Ruiz</li>
-          </ul>
-        </div>
-        <div class="bg-white shadow rounded-lg p-4">
-          <h3 class="text-lg font-semibold mb-2">Inventario Bajo</h3>
-          <ul class="space-y-1 text-gray-700 text-sm">
-            <li>Aceite 10W40</li>
-            <li>Filtro de aire</li>
-            <li>Shampoo de carrocería</li>
-          </ul>
-        </div>
+      </aside>
+
+      <!-- Overlay móvil -->
+      <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
+
+      <!-- Contenido principal -->
+      <div class="flex-1 flex flex-col">
+        <!-- Header -->
+        <header
+          class="sticky top-0 z-30 flex h-16 items-center gap-4 border-b-[5px] border-[#900417] bg-white px-6"
+        >
+          <button id="sidebar-toggle" class="md:hidden text-[#1A4580]">
+            <i class="bx bx-menu text-2xl"></i>
+          </button>
+          <h1 class="flex-1 text-lg font-semibold text-[#1A4580]">
+            Panel de Administración
+          </h1>
+          <button
+            class="rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-4 py-2"
+          >
+            Mi Perfil
+          </button>
+        </header>
+
+        <!-- Main -->
+        <main class="flex-1 p-6 overflow-auto">
+          <div class="space-y-6">
+            <!-- Título y descripción -->
+            <div>
+              <h2 class="text-2xl font-bold tracking-tight text-[#1A4580]">
+                Dashboard
+              </h2>
+              <p class="text-gray-500">
+                Resumen de ventas y rendimiento de servicios
+              </p>
+            </div>
+
+            <!-- Tabs y botón Descargar -->
+            <div class="flex items-center justify-between">
+              <div class="bg-[#8096B1]/20 rounded-lg p-1 flex">
+                <button id="tab-diario" class="tab px-4 py-2 rounded-md bg-[#1A4580] text-white">
+                  Diario
+                </button>
+                <button id="tab-semanal" class="tab px-4 py-2 rounded-md text-[#1A4580]">
+                  Semanal
+                </button>
+                <button id="tab-mensual" class="tab px-4 py-2 rounded-md text-[#1A4580]">
+                  Mensual
+                </button>
+              </div>
+              <button
+                class="rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-4 py-2"
+              >
+                Descargar
+              </button>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+                <div class="flex justify-between pb-2">
+                  <p class="text-sm font-medium text-[#1A4580]">Ventas Totales</p>
+                  <i class="bx bx-dollar-circle text-[#1A4580] text-xl"></i>
+                </div>
+                <div class="text-2xl font-bold text-[#1A4580]">$2,350</div>
+                <p class="text-xs text-gray-500">+18% desde ayer</p>
+              </div>
+              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+                <div class="flex justify-between pb-2">
+                  <p class="text-sm font-medium text-[#1A4580]">Órdenes</p>
+                  <i class="bx bx-credit-card text-[#1A4580] text-xl"></i>
+                </div>
+                <div class="text-2xl font-bold text-[#1A4580]">+12</div>
+                <p class="text-xs text-gray-500">+8% desde ayer</p>
+              </div>
+              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+                <div class="flex justify-between pb-2">
+                  <p class="text-sm font-medium text-[#1A4580]">Clientes Nuevos</p>
+                  <i class="bx bx-user-plus text-[#1A4580] text-xl"></i>
+                </div>
+                <div class="text-2xl font-bold text-[#1A4580]">+5</div>
+                <p class="text-xs text-gray-500">+12% desde ayer</p>
+              </div>
+              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+                <div class="flex justify-between pb-2">
+                  <p class="text-sm font-medium text-[#1A4580]">Ticket Promedio</p>
+                  <i class="bx bx-pie-chart-alt text-[#1A4580] text-xl"></i>
+                </div>
+                <div class="text-2xl font-bold text-[#1A4580]">$195</div>
+                <p class="text-xs text-gray-500">+6% desde ayer</p>
+              </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+              <div class="col-span-4 border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+                <h3 class="text-lg font-bold text-[#1A4580] mb-4">Ventas por Hora</h3>
+                <div class="h-[300px]">
+                  <canvas id="salesChart"></canvas>
+                </div>
+              </div>
+              <div class="col-span-3 border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+                <h3 class="text-lg font-bold text-[#1A4580] mb-2">Ventas por Servicio</h3>
+                <p class="text-sm text-gray-500 mb-4">Distribución de ventas por tipo de servicio</p>
+                <div class="h-[300px]">
+                  <canvas id="serviceChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <!-- Servicios Más Vendidos -->
+              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+                <h3 class="text-lg font-bold text-[#1A4580] mb-4">Servicios Más Vendidos</h3>
+                <div class="space-y-4">
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-[#1A4580] mr-2"></div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">Cambio de Aceite</div>
+                      <div class="text-xs text-gray-500">Mecánica Automotriz</div>
+                    </div>
+                    <div class="font-medium">$45</div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-[#48B9E1] mr-2"></div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">Cambio de Llantas</div>
+                      <div class="text-xs text-gray-500">Llantas</div>
+                    </div>
+                    <div class="font-medium">$320</div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-[#900417] mr-2"></div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">Instalación de Batería</div>
+                      <div class="text-xs text-gray-500">Baterías</div>
+                    </div>
+                    <div class="font-medium">$180</div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-[#8096B1] mr-2"></div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">Cambio de Plumillas</div>
+                      <div class="text-xs text-gray-500">Plumillas</div>
+                    </div>
+                    <div class="font-medium">$35</div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-[#2A6BB4] mr-2"></div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">Instalación de GPS</div>
+                      <div class="text-xs text-gray-500">GPS</div>
+                    </div>
+                    <div class="font-medium">$120</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Clientes Recientes -->
+              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+                <h3 class="text-lg font-bold text-[#1A4580] mb-4">Clientes Recientes</h3>
+                <div class="space-y-4">
+                  <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-[#1A4580] mr-3 flex items-center justify-center text-white font-bold">JD</div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">Juan Díaz</div>
+                      <div class="text-xs text-gray-500">Mecánica Automotriz</div>
+                    </div>
+                    <div class="font-medium">$150</div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-[#48B9E1] mr-3 flex items-center justify-center text-white font-bold">MR</div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">María Rodríguez</div>
+                      <div class="text-xs text-gray-500">Llantas</div>
+                    </div>
+                    <div class="font-medium">$280</div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-[#900417] mr-3 flex items-center justify-center text-white font-bold">CL</div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">Carlos López</div>
+                      <div class="text-xs text-gray-500">Baterías</div>
+                    </div>
+                    <div class="font-medium">$95</div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-[#8096B1] mr-3 flex items-center justify-center text-white font-bold">AG</div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">Ana González</div>
+                      <div class="text-xs text-gray-500">GPS</div>
+                    </div>
+                    <div class="font-medium">$210</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Inventario Bajo -->
+              <div class="border-[5px] border-[#900417] rounded-[30px] bg-white p-4 shadow-lg">
+                <h3 class="text-lg font-bold text-[#1A4580] mb-4">Inventario Bajo</h3>
+                <div class="space-y-4">
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-[#900417] mr-2"></div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">Aceite Sintético 5W-30</div>
+                      <div class="text-xs text-gray-500">5 unidades restantes</div>
+                    </div>
+                    <button class="rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-2 py-1 text-xs">Ordenar</button>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-[#900417] mr-2"></div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">Batería 12V</div>
+                      <div class="text-xs text-gray-500">3 unidades restantes</div>
+                    </div>
+                    <button class="rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-2 py-1 text-xs">Ordenar</button>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-[#900417] mr-2"></div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">Plumillas 22"</div>
+                      <div class="text-xs text-gray-500">4 unidades restantes</div>
+                    </div>
+                    <button class="rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-2 py-1 text-xs">Ordenar</button>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-[#900417] mr-2"></div>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium">Filtro de Aire</div>
+                      <div class="text-xs text-gray-500">6 unidades restantes</div>
+                    </div>
+                    <button class="rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-2 py-1 text-xs">Ordenar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     </div>
-  </main>
 
-  <!-- Script funcionalidad -->
-  <script>
-    let lineChart;
-    let pieChart;
+    <!-- Chart.js init -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Sales Chart
+        const salesCtx = document.getElementById("salesChart")?.getContext("2d");
+        if (salesCtx) {
+          new Chart(salesCtx, {
+            type: "line",
+            data: {
+              labels: ["8AM", "10AM", "12PM", "2PM", "4PM", "6PM"],
+              datasets: [{
+                label: "Ventas por Hora",
+                data: [120,240,380,290,340,180],
+                backgroundColor: "rgba(72,185,225,0.2)",
+                borderColor: "#1A4580",
+                borderWidth:2,
+                tension:0.3,
+                pointBackgroundColor:"#1A4580",
+                pointRadius:4
+              }]
+            },
+            options: {
+              responsive:true,
+              maintainAspectRatio:false,
+              scales: { y:{ beginAtZero:true, ticks:{ callback: v=>"$"+v } } },
+              plugins:{ tooltip:{ callbacks:{ label: ctx=>"$"+ctx.raw } } }
+            }
+          });
+        }
 
-    const dataSets = {
-      diario: {
-        labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'],
-        data: [12, 19, 3, 5, 2]
-      },
-      semanal: {
-        labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
-        data: [40, 32, 45, 30]
-      },
-      mensual: {
-        labels: ['Ene', 'Feb', 'Mar', 'Abr'],
-        data: [100, 120, 90, 110]
-      }
-    };
-
-    function crearGraficos(tipo) {
-      const ctxLine = document.getElementById('lineChart').getContext('2d');
-      const ctxPie = document.getElementById('pieChart').getContext('2d');
-
-      if (lineChart) lineChart.destroy();
-      if (pieChart) pieChart.destroy();
-
-      lineChart = new Chart(ctxLine, {
-        type: 'line',
-        data: {
-          labels: dataSets[tipo].labels,
-          datasets: [{
-            label: 'Ventas',
-            data: dataSets[tipo].data,
-            backgroundColor: 'rgba(59,130,246,0.2)',
-            borderColor: 'rgba(59,130,246,1)',
-            borderWidth: 2,
-            fill: true,
-          }]
+        // Service Chart
+        const serviceCtx = document.getElementById("serviceChart")?.getContext("2d");
+        if (serviceCtx) {
+          new Chart(serviceCtx, {
+            type: "pie",
+            data: {
+              labels: ["Mecánica","Llantas","Baterías","Plumillas","GPS"],
+              datasets:[{
+                data:[35,25,20,10,10],
+                backgroundColor:["#1A4580","#48B9E1","#900417","#8096B1","#2A6BB4"],
+                borderWidth:1
+              }]
+            },
+            options:{
+              responsive:true,
+              maintainAspectRatio:false,
+              plugins:{
+                legend:{ position:"bottom" },
+                tooltip:{ callbacks:{ label: ctx=>ctx.label+": "+ctx.raw+"%" } }
+              }
+            }
+          });
         }
       });
+    </script>
 
-      pieChart = new Chart(ctxPie, {
-        type: 'pie',
-        data: {
-          labels: ['Lavado', 'Aceite', 'Otros'],
-          datasets: [{
-            data: [40, 30, 30],
-            backgroundColor: ['#3b82f6', '#10b981', '#f59e0b']
-          }]
-        }
+    <!-- Sidebar Toggle Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebar-overlay");
+        const openBtn = document.getElementById("sidebar-toggle");
+        const closeBtn = document.getElementById("close-sidebar");
+
+        const open = () => {
+          sidebar.classList.remove("-translate-x-full");
+          overlay.classList.remove("hidden");
+          document.body.classList.add("overflow-hidden");
+        };
+        const close = () => {
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("hidden");
+          document.body.classList.remove("overflow-hidden");
+        };
+
+        openBtn?.addEventListener("click", open);
+        closeBtn?.addEventListener("click", close);
+        overlay?.addEventListener("click", close);
+        window.addEventListener("resize", () => {
+          if (window.innerWidth >= 768) close();
+        });
       });
-    }
-
-    function cambiarGrafico(tipo) {
-      crearGraficos(tipo);
-      document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('bg-blue-600', 'text-white'));
-      event.target.classList.add('bg-blue-600', 'text-white');
-    }
-
-    // Inicialización
-    window.onload = () => cambiarGrafico('diario');
-  </script>
-</body>
+    </script>
+  </body>
 </html>
