@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuestros Servicios - Speed Auto Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1A4580",
+              secondary: "#48B9E1",
+              accent: "#900417",
+              light: "#8096B1",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 w-full border-b-[5px] border-[#900417] bg-white"
+    >
+      <div
+        class="container mx-auto flex h-20 items-center justify-between px-4"
+      >
+        <div class="flex items-center gap-2">
+          <div class="rounded-full bg-[#1A4580] p-2">
+            <i class="bx bxs-car text-white text-2xl"></i>
+          </div>
+          <span class="text-2xl font-bold text-[#1A4580]"
+            >Speed Auto Services</span
+          >
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex gap-6">
+          <a
+            href="mostrarusuarios.html"
+            class="text-[#1A4580] font-medium hover:text-[#48B9E1] transition-colors"
+          >
+            Inicio
+          </a>
+          <div class="relative group">
+            <button class="flex items-center gap-1 text-[#48B9E1] font-medium">
+              Servicios
+              <i
+                class="bx bx-chevron-down text-lg transition-transform group-hover:rotate-180"
+              ></i>
+            </button>
+            <div
+              class="absolute left-0 top-full mt-2 w-64 rounded-[15px] border-[3px] border-[#900417] bg-white p-2 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+            >
+              <a
+                href="#mecanica"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bxs-car text-xl"></i>
+                <span>Mecánica Automotriz</span>
+              </a>
+              <a
+                href="#llantas"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-disc text-xl"></i>
+                <span>Llantas</span>
+              </a>
+              <a
+                href="#baterias"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bxs-battery-charging text-xl"></i>
+                <span>Baterías</span>
+              </a>
+              <a
+                href="#plumillas"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-droplet text-xl"></i>
+                <span>Plumillas</span>
+              </a>
+              <a
+                href="#gps"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-navigation text-xl"></i>
+                <span>GPS</span>
+              </a>
+            </div>
+          </div>
+          <a
+            href="index.html#location"
+            class="text-[#1A4580] font-medium hover:text-[#48B9E1] transition-colors"
+          >
+            Ubicación
+          </a>
+          <a
+            href="index.html#about"
+            class="text-[#1A4580] font-medium hover:text-[#48B9E1] transition-colors"
+          >
+            Nosotros
+          </a>
+          <a
+            href="index.html#testimonials"
+            class="text-[#1A4580] font-medium hover:text-[#48B9E1] transition-colors"
+          >
+            Testimonios
+          </a>
+          <a
+            href="index.html#contact"
+            class="text-[#1A4580] font-medium hover:text-[#48B9E1] transition-colors"
+          >
+            Contacto
+          </a>
+          <a
+            href="admin.html"
+            class="text-[#1A4580] font-medium hover:text-[#48B9E1] transition-colors"
+          >
+            Admin
+          </a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-button"
+          class="md:hidden text-[#1A4580] focus:outline-none"
+        >
+          <i class="bx bx-menu text-3xl"></i>
+        </button>
+
+        <button
+          class="hidden md:block rounded-[30px] bg-[#1A4580] text-white hover:bg-[#48B9E1] transition-colors px-4 py-2"
+        >
+          Contactar
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white w-full border-t border-[#900417]/20"
+      >
+        <div class="container mx-auto px-4 py-3 space-y-3">
+          <a
+            href="index.html"
+            class="block text-[#1A4580] font-medium hover:text-[#48B9E1] transition-colors py-2 border-b border-gray-100"
+          >
+            Inicio
+          </a>
+          <div class="py-2 border-b border-gray-100">
+            <button
+              id="mobile-services-toggle"
+              class="flex items-center justify-between w-full text-[#48B9E1] font-medium"
+            >
+              Servicios
+              <i
+                id="mobile-services-icon"
+                class="bx bx-chevron-down text-lg transition-transform"
+              ></i>
+            </button>
+            <div id="mobile-services-dropdown" class="mt-2 pl-4 space-y-2">
+              <a
+                href="#mecanica"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bxs-car text-xl"></i>
+                <span>Mecánica Automotriz</span>
+              </a>
+              <a
+                href="#llantas"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-disc text-xl"></i>
+                <span>Llantas</span>
+              </a>
+              <a
+                href="#baterias"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bxs-battery-charging text-xl"></i>
+                <span>Baterías</span>
+              </a>
+              <a
+                href="#plumillas"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-droplet text-xl"></i>
+                <span>Plumillas</span>
+              </a>
+              <a
+                href="#gps"
+                class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"
+              >
+                <i class="bx bx-navigation text-xl"></i>
+                <span>GPS</span>
+              </a>
+            </div>
+          </div>
+          <a
+            href="index.html#location"
+            class="block text-[#1A4580] font-medium hover:text-[#48B9E1] transition-colors py-2 border-b border-gray-100"
+          >
+            Ubicación
+          </a>
+          <a
+            href="index.html#about"
+            class="block text-[#1A4580] font-medium hover:text-[#48B9E1] transition-colors py-2 border-b border-gray-100"
+          >
+            Nosotros
+          </a>
+          <a
+            href="index.html#testimonials"
+            class="block text-[#1A4580] font-medium hover:text-[#48B9E1] transition-colors py-2 border-b border-gray-100"
+          >
+            Testimonios
+          </a>
+          <a
+            href="index.html#contact"
+            class="block text-[#1A4580] font-medium hover:text-[#48B9E1] transition-colors py-2 border-b border-gray-100"
+          >
+            Contacto
+          </a>
+          <a
+            href="admin.html"
+            class="block text-[#1A4580] font-medium hover:text-[#48B9E1] transition-colors py-2 border-b border-gray-100"
+          >
+            Admin
+          </a>
+          <button
+            class="w-full rounded-[30px] bg-[#1A4580] text-white hover:bg-[#48B9E1] transition-colors px-4 py-2 mt-2"
+          >
+            Contactar
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="w-full py-12 bg-gradient-to-b from-[#8096B1]/10 to-white">
+      <div class="container mx-auto px-4 md:px-6">
+        <div
+          class="flex flex-col items-center justify-center space-y-4 text-center"
+        >
+          <div class="inline-block rounded-full bg-[#1A4580] p-2">
+            <i class="bx bxs-car text-white text-2xl"></i>
+          </div>
+          <div class="space-y-2">
+            <h1
+              class="text-3xl font-bold tracking-tighter text-[#1A4580] sm:text-4xl md:text-5xl"
+            >
+              Nuestros Servicios
+            </h1>
+            <p
+              class="mx-auto max-w-[700px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+            >
+              Conoce en detalle todos los servicios que ofrecemos para mantener
+              tu vehículo en óptimas condiciones.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mecánica Automotriz Section -->
+    <section id="mecanica" class="w-full py-12 md:py-16 bg-white">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+          <div class="relative">
+            <div
+              class="absolute -top-4 -left-4 w-24 h-24 bg-[#48B9E1]/20 rounded-full z-0"
+            ></div>
+            <div
+              class="absolute -bottom-4 -right-4 w-32 h-32 bg-[#900417]/10 rounded-full z-0"
+            ></div>
+            <img
+              src="https://placehold.co/600x400"
+              alt="Mecánica Automotriz"
+              class="relative z-10 mx-auto aspect-video overflow-hidden rounded-[30px] border-[5px] border-[#900417] object-cover shadow-lg transform transition-transform hover:scale-[1.02] duration-300"
+            />
+          </div>
+          <div class="space-y-4">
+            <div
+              class="inline-block rounded-lg bg-[#48B9E1]/20 px-3 py-1 text-sm font-medium text-[#1A4580]"
+            >
+              Servicio Completo
+            </div>
+            <h2
+              class="text-3xl font-bold tracking-tighter text-[#1A4580] sm:text-4xl"
+            >
+              Mecánica Automotriz
+            </h2>
+            <p class="text-gray-600 md:text-lg">
+              Nuestro servicio de mecánica automotriz abarca todas las
+              necesidades de tu vehículo, desde mantenimientos preventivos hasta
+              reparaciones complejas. Contamos con técnicos certificados y
+              equipos de diagnóstico de última generación.
+            </p>
+            <div class="space-y-3 mt-6">
+              <h3 class="text-xl font-bold text-[#1A4580]">
+                Servicios incluidos:
+              </h3>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Cambio de aceite y filtros
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Utilizamos aceites de la más alta calidad para prolongar
+                      la vida útil de tu motor.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">Afinación de motor</p>
+                    <p class="text-sm text-gray-600">
+                      Optimizamos el rendimiento de tu motor para un mejor
+                      desempeño y menor consumo de combustible.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">Sistema de frenos</p>
+                    <p class="text-sm text-gray-600">
+                      Revisión y reemplazo de pastillas, discos, tambores y
+                      líquido de frenos.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Suspensión y dirección
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Diagnóstico y reparación de amortiguadores, resortes y
+                      componentes de dirección.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">Sistema eléctrico</p>
+                    <p class="text-sm text-gray-600">
+                      Diagnóstico y reparación de problemas eléctricos,
+                      alternador, arranque y más.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-4">
+              <button
+                class="rounded-[30px] bg-[#1A4580] text-white hover:bg-[#48B9E1] transition-colors px-6 py-3"
+              >
+                Agendar Servicio
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Llantas Section -->
+    <section id="llantas" class="w-full py-12 md:py-16 bg-[#8096B1]/5">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+          <div class="space-y-4 order-2 lg:order-1">
+            <div
+              class="inline-block rounded-lg bg-[#48B9E1]/20 px-3 py-1 text-sm font-medium text-[#1A4580]"
+            >
+              Máxima Seguridad
+            </div>
+            <h2
+              class="text-3xl font-bold tracking-tighter text-[#1A4580] sm:text-4xl"
+            >
+              Llantas
+            </h2>
+            <p class="text-gray-600 md:text-lg">
+              Ofrecemos una amplia variedad de llantas de las mejores marcas
+              para todo tipo de vehículos. Nuestro equipo te asesorará para
+              elegir las llantas adecuadas según tus necesidades y presupuesto.
+            </p>
+            <div class="space-y-3 mt-6">
+              <h3 class="text-xl font-bold text-[#1A4580]">
+                Servicios incluidos:
+              </h3>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">Venta de llantas</p>
+                    <p class="text-sm text-gray-600">
+                      Amplio catálogo de llantas para autos, camionetas y SUVs
+                      de las mejores marcas.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Instalación y balanceo
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Instalación profesional con equipo especializado para un
+                      balanceo perfecto.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">Alineación</p>
+                    <p class="text-sm text-gray-600">
+                      Alineación computarizada para un desgaste uniforme y mayor
+                      duración de tus llantas.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Reparación de llantas
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Reparación de pinchazos y daños menores para extender la
+                      vida útil de tus llantas.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Rotación de llantas
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Servicio de rotación para garantizar un desgaste uniforme
+                      y mayor durabilidad.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-4">
+              <button
+                class="rounded-[30px] bg-[#1A4580] text-white hover:bg-[#48B9E1] transition-colors px-6 py-3"
+              >
+                Ver Catálogo
+              </button>
+            </div>
+          </div>
+          <div class="relative order-1 lg:order-2">
+            <div
+              class="absolute -top-4 -right-4 w-24 h-24 bg-[#48B9E1]/20 rounded-full z-0"
+            ></div>
+            <div
+              class="absolute -bottom-4 -left-4 w-32 h-32 bg-[#900417]/10 rounded-full z-0"
+            ></div>
+            <img
+              src="https://placehold.co/600x400"
+              alt="Llantas"
+              class="relative z-10 mx-auto aspect-video overflow-hidden rounded-[30px] border-[5px] border-[#900417] object-cover shadow-lg transform transition-transform hover:scale-[1.02] duration-300"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Baterías Section -->
+    <section id="baterias" class="w-full py-12 md:py-16 bg-white">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+          <div class="relative">
+            <div
+              class="absolute -top-4 -left-4 w-24 h-24 bg-[#48B9E1]/20 rounded-full z-0"
+            ></div>
+            <div
+              class="absolute -bottom-4 -right-4 w-32 h-32 bg-[#900417]/10 rounded-full z-0"
+            ></div>
+            <img
+              src="https://placehold.co/600x400"
+              alt="Baterías"
+              class="relative z-10 mx-auto aspect-video overflow-hidden rounded-[30px] border-[5px] border-[#900417] object-cover shadow-lg transform transition-transform hover:scale-[1.02] duration-300"
+            />
+          </div>
+          <div class="space-y-4">
+            <div
+              class="inline-block rounded-lg bg-[#48B9E1]/20 px-3 py-1 text-sm font-medium text-[#1A4580]"
+            >
+              Energía Confiable
+            </div>
+            <h2
+              class="text-3xl font-bold tracking-tighter text-[#1A4580] sm:text-4xl"
+            >
+              Baterías
+            </h2>
+            <p class="text-gray-600 md:text-lg">
+              Contamos con baterías de alta calidad para todo tipo de vehículos,
+              con garantía y servicio de instalación profesional. Nuestras
+              baterías ofrecen un rendimiento superior y larga duración.
+            </p>
+            <div class="space-y-3 mt-6">
+              <h3 class="text-xl font-bold text-[#1A4580]">
+                Servicios incluidos:
+              </h3>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">Venta de baterías</p>
+                    <p class="text-sm text-gray-600">
+                      Amplia selección de baterías para diferentes necesidades y
+                      presupuestos.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Instalación profesional
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Instalación rápida y segura por técnicos especializados.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Diagnóstico del sistema eléctrico
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Evaluación completa del sistema de carga para asegurar el
+                      correcto funcionamiento.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">Garantía extendida</p>
+                    <p class="text-sm text-gray-600">
+                      Todas nuestras baterías cuentan con garantía por escrito.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Reciclaje de baterías usadas
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Nos encargamos del reciclaje responsable de tu batería
+                      antigua.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-4">
+              <button
+                class="rounded-[30px] bg-[#1A4580] text-white hover:bg-[#48B9E1] transition-colors px-6 py-3"
+              >
+                Consultar Disponibilidad
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plumillas Section -->
+    <section id="plumillas" class="w-full py-12 md:py-16 bg-[#8096B1]/5">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+          <div class="space-y-4 order-2 lg:order-1">
+            <div
+              class="inline-block rounded-lg bg-[#48B9E1]/20 px-3 py-1 text-sm font-medium text-[#1A4580]"
+            >
+              Visibilidad Perfecta
+            </div>
+            <h2
+              class="text-3xl font-bold tracking-tighter text-[#1A4580] sm:text-4xl"
+            >
+              Plumillas
+            </h2>
+            <p class="text-gray-600 md:text-lg">
+              Las plumillas limpiaparabrisas son esenciales para una conducción
+              segura en condiciones de lluvia. Ofrecemos plumillas de alta
+              calidad que garantizan una visibilidad óptima en cualquier clima.
+            </p>
+            <div class="space-y-3 mt-6">
+              <h3 class="text-xl font-bold text-[#1A4580]">
+                Servicios incluidos:
+              </h3>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">Venta de plumillas</p>
+                    <p class="text-sm text-gray-600">
+                      Amplia variedad de plumillas para diferentes modelos de
+                      vehículos.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Instalación gratuita
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Instalación sin costo adicional con la compra de
+                      plumillas.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Revisión del sistema limpiaparabrisas
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Diagnóstico del sistema completo incluyendo motor y bomba
+                      de agua.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Plumillas para todo clima
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Opciones especiales para condiciones extremas de lluvia o
+                      nieve.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-4">
+              <button
+                class="rounded-[30px] bg-[#1A4580] text-white hover:bg-[#48B9E1] transition-colors px-6 py-3"
+              >
+                Solicitar Servicio
+              </button>
+            </div>
+          </div>
+          <div class="relative order-1 lg:order-2">
+            <div
+              class="absolute -top-4 -right-4 w-24 h-24 bg-[#48B9E1]/20 rounded-full z-0"
+            ></div>
+            <div
+              class="absolute -bottom-4 -left-4 w-32 h-32 bg-[#900417]/10 rounded-full z-0"
+            ></div>
+            <img
+              src="https://placehold.co/600x400"
+              alt="Plumillas"
+              class="relative z-10 mx-auto aspect-video overflow-hidden rounded-[30px] border-[5px] border-[#900417] object-cover shadow-lg transform transition-transform hover:scale-[1.02] duration-300"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GPS Section -->
+    <section id="gps" class="w-full py-12 md:py-16 bg-white">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+          <div class="relative">
+            <div
+              class="absolute -top-4 -left-4 w-24 h-24 bg-[#48B9E1]/20 rounded-full z-0"
+            ></div>
+            <div
+              class="absolute -bottom-4 -right-4 w-32 h-32 bg-[#900417]/10 rounded-full z-0"
+            ></div>
+            <img
+              src="https://placehold.co/600x400"
+              alt="GPS"
+              class="relative z-10 mx-auto aspect-video overflow-hidden rounded-[30px] border-[5px] border-[#900417] object-cover shadow-lg transform transition-transform hover:scale-[1.02] duration-300"
+            />
+          </div>
+          <div class="space-y-4">
+            <div
+              class="inline-block rounded-lg bg-[#48B9E1]/20 px-3 py-1 text-sm font-medium text-[#1A4580]"
+            >
+              Seguridad y Control
+            </div>
+            <h2
+              class="text-3xl font-bold tracking-tighter text-[#1A4580] sm:text-4xl"
+            >
+              GPS
+            </h2>
+            <p class="text-gray-600 md:text-lg">
+              Nuestros sistemas GPS ofrecen seguridad y tranquilidad para tu
+              vehículo. Con tecnología de punta, podrás monitorear la ubicación
+              de tu auto en tiempo real y recibir alertas de seguridad.
+            </p>
+            <div class="space-y-3 mt-6">
+              <h3 class="text-xl font-bold text-[#1A4580]">
+                Servicios incluidos:
+              </h3>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Venta de dispositivos GPS
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Equipos de última generación con diferentes
+                      funcionalidades.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Instalación profesional
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Instalación discreta y segura por técnicos especializados.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Monitoreo en tiempo real
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Seguimiento de la ubicación de tu vehículo desde tu
+                      smartphone.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">
+                      Alertas de seguridad
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Notificaciones por movimientos no autorizados o salida de
+                      zonas predefinidas.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    class="bx bx-check-circle text-[#48B9E1] text-xl mt-0.5"
+                  ></i>
+                  <div>
+                    <p class="font-medium text-[#1A4580]">Soporte técnico</p>
+                    <p class="text-sm text-gray-600">
+                      Asistencia continua para resolver cualquier duda o
+                      problema.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-4">
+              <button
+                class="rounded-[30px] bg-[#1A4580] text-white hover:bg-[#48B9E1] transition-colors px-6 py-3"
+              >
+                Solicitar Información
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section
+      class="w-full py-12 md:py-16 bg-gradient-to-b from-[#8096B1]/10 to-white"
+    >
+      <div class="container mx-auto px-4 md:px-6">
+        <div
+          class="rounded-[30px] border-[5px] border-[#900417] bg-gradient-to-br from-[#1A4580] to-[#1A4580]/90 p-8 md:p-12 text-white shadow-lg"
+        >
+          <div class="grid gap-6 lg:grid-cols-2 items-center">
+            <div class="space-y-4">
+              <h2 class="text-3xl font-bold">
+                ¿Listo para mejorar tu experiencia de conducción?
+              </h2>
+              <p class="text-white/90 md:text-lg">
+                Agenda una cita hoy mismo y déjanos cuidar de tu vehículo con
+                nuestros servicios profesionales.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-3 pt-4">
+                <button
+                  class="rounded-[30px] bg-white text-[#1A4580] hover:bg-[#48B9E1] hover:text-white transition-colors px-6 py-3 font-medium"
+                >
+                  Agendar Cita
+                </button>
+                <button
+                  class="rounded-[30px] border-2 border-white text-white hover:bg-white/10 transition-colors px-6 py-3 font-medium"
+                >
+                  Contactar por WhatsApp
+                </button>
+              </div>
+            </div>
+            <div class="flex justify-center">
+              <div
+                class="rounded-full bg-white/10 p-6 w-48 h-48 flex items-center justify-center"
+              >
+                <i class="bx bxs-car text-white text-8xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="w-full border-t-[5px] border-[#900417] bg-[#1A4580] py-12 text-white"
+    >
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div class="space-y-4">
+            <div class="flex items-center gap-2">
+              <div class="rounded-full bg-white p-2">
+                <i class="bx bxs-car text-[#1A4580] text-xl"></i>
+              </div>
+              <h3 class="text-lg font-bold">Speed Auto Services</h3>
+            </div>
+            <p class="text-sm text-white/80">
+              Ofrecemos servicios automotrices de calidad con técnicos
+              certificados y tecnología de punta.
+            </p>
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-lg font-bold">Servicios</h3>
+            <ul class="space-y-2 text-sm text-white/80">
+              <li>
+                <a
+                  href="#mecanica"
+                  class="hover:text-[#48B9E1] transition-colors"
+                >
+                  Mecánica Automotriz
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#llantas"
+                  class="hover:text-[#48B9E1] transition-colors"
+                >
+                  Llantas
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#baterias"
+                  class="hover:text-[#48B9E1] transition-colors"
+                >
+                  Baterías
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#plumillas"
+                  class="hover:text-[#48B9E1] transition-colors"
+                >
+                  Plumillas
+                </a>
+              </li>
+              <li>
+                <a href="#gps" class="hover:text-[#48B9E1] transition-colors">
+                  GPS
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-lg font-bold">Enlaces Rápidos</h3>
+            <ul class="space-y-2 text-sm text-white/80">
+              <li>
+                <a
+                  href="index.html"
+                  class="hover:text-[#48B9E1] transition-colors"
+                >
+                  Inicio
+                </a>
+              </li>
+              <li>
+                <a
+                  href="index.html#location"
+                  class="hover:text-[#48B9E1] transition-colors"
+                >
+                  Ubicación
+                </a>
+              </li>
+              <li>
+                <a
+                  href="index.html#about"
+                  class="hover:text-[#48B9E1] transition-colors"
+                >
+                  Nosotros
+                </a>
+              </li>
+              <li>
+                <a
+                  href="index.html#testimonials"
+                  class="hover:text-[#48B9E1] transition-colors"
+                >
+                  Testimonios
+                </a>
+              </li>
+              <li>
+                <a
+                  href="index.html#contact"
+                  class="hover:text-[#48B9E1] transition-colors"
+                >
+                  Contacto
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-lg font-bold">Contacto</h3>
+            <ul class="space-y-2 text-sm text-white/80">
+              <li class="flex items-center gap-2">
+                <i class="bx bx-phone text-lg"></i>
+                +123 456 7890
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="bx bx-envelope text-lg"></i>
+                info@speedautoservices.com
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="bx bx-map text-lg"></i>
+                123 Calle Principal, Ciudad, País
+              </li>
+            </ul>
+            <div class="flex space-x-4 pt-2">
+              <a
+                href="#"
+                class="rounded-full bg-white/10 p-2 hover:bg-[#48B9E1] transition-colors"
+              >
+                <i class="bx bxl-facebook text-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="rounded-full bg-white/10 p-2 hover:bg-[#48B9E1] transition-colors"
+              >
+                <i class="bx bxl-twitter text-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="rounded-full bg-white/10 p-2 hover:bg-[#48B9E1] transition-colors"
+              >
+                <i class="bx bxl-instagram text-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-8 border-t border-white/20 pt-8 text-center text-sm text-white/60"
+        >
+          <p>© 2025 Speed AutoServicios Speed. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        mobileMenuButton.addEventListener("click", function () {
+          // Toggle the menu
+          if (mobileMenu.classList.contains("hidden")) {
+            mobileMenu.classList.remove("hidden");
+            mobileMenuButton.innerHTML = '<i class="bx bx-x text-3xl"></i>';
+          } else {
+            mobileMenu.classList.add("hidden");
+            mobileMenuButton.innerHTML = '<i class="bx bx-menu text-3xl"></i>';
+          }
+        });
+
+        // Close menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.add("hidden");
+            mobileMenuButton.innerHTML = '<i class="bx bx-menu text-3xl"></i>';
+          });
+        });
+
+        // Mobile Services Dropdown Toggle
+        const mobileServicesToggle = document.getElementById(
+          "mobile-services-toggle"
+        );
+        const mobileServicesDropdown = document.getElementById(
+          "mobile-services-dropdown"
+        );
+        const mobileServicesIcon = document.getElementById(
+          "mobile-services-icon"
+        );
+
+        if (mobileServicesToggle) {
+          mobileServicesToggle.addEventListener("click", function () {
+            mobileServicesDropdown.classList.toggle("hidden");
+            mobileServicesIcon.classList.toggle("rotate-180");
+          });
+
+          // Close dropdown when clicking on a service link
+          const serviceLinks = mobileServicesDropdown.querySelectorAll("a");
+          serviceLinks.forEach((link) => {
+            link.addEventListener("click", function () {
+              mobileServicesDropdown.classList.add("hidden");
+              mobileServicesIcon.classList.remove("rotate-180");
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
