@@ -1,143 +1,152 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard - Autoservicios Speed</title>
-    <!-- Tailwind vía CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: "#1A4580",
-              secondary: "#48B9E1",
-              accent: "#900417",
-              light: "#8096B1",
-            },
-          },
-        },
-      };
-    </script>
-    <!-- Boxicons -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  <body class="bg-[#8096B1]/5">
-    <div class="flex min-h-screen">
-      <!-- Sidebar -->
-      <aside
-        id="sidebar"
-        class="fixed inset-0 z-40 w-64 border-r-[5px] border-[#900417] bg-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out md:relative md:block"
-      >
-        <div
-          class="h-20 border-b border-[#900417] flex items-center justify-between px-4"
-        >
-          <span class="text-xl font-bold text-[#1A4580]">Speed Admin</span>
-          <button id="close-sidebar" class="md:hidden text-[#1A4580]">
-            <i class="bx bx-x text-2xl"></i>
-          </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <main class="flex-1 p-6">
+    <div class="space-y-6">
+      <!-- Header -->
+      <div class="flex items-center justify-between">
+        <h1 class="text-3xl font-bold">Dashboard</h1>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Descargar</button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex gap-2">
+        <button onclick="cambiarGrafico('diario')" class="tab bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300">Diario</button>
+        <button onclick="cambiarGrafico('semanal')" class="tab bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300">Semanal</button>
+        <button onclick="cambiarGrafico('mensual')" class="tab bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300">Mensual</button>
+      </div>
+
+      <!-- Tarjetas -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white shadow rounded-lg p-4">
+          <p class="text-sm text-gray-500">Total Ventas</p>
+          <p class="text-2xl font-semibold">$12,345</p>
         </div>
-        <nav class="p-4">
-          <ul class="space-y-2">
-            <li><a href="#" class="flex items-center gap-2 p-2 rounded-md bg-[#48B9E1]/10 text-[#1A4580] font-medium"><i class="bx bx-home text-xl"></i><span>Dashboard</span></a></li>
-            <li><a href="#" class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"><i class="bx bx-cart text-xl"></i><span>Órdenes</span></a></li>
-            <li><a href="#" class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"><i class="bx bx-user text-xl"></i><span>Clientes</span></a></li>
-            <li><a href="#" class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"><i class="bx bx-package text-xl"></i><span>Productos</span></a></li>
-            <li><a href="#" class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"><i class="bx bx-bar-chart-alt-2 text-xl"></i><span>Analíticas</span></a></li>
-            <li><a href="#" class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"><i class="bx bx-calendar text-xl"></i><span>Calendario</span></a></li>
-            <li><a href="#" class="flex items-center gap-2 p-2 rounded-md hover:bg-[#48B9E1]/10 text-[#1A4580] font-medium"><i class="bx bx-cog text-xl"></i><span>Configuración</span></a></li>
+        <div class="bg-white shadow rounded-lg p-4">
+          <p class="text-sm text-gray-500">Clientes Nuevos</p>
+          <p class="text-2xl font-semibold">54</p>
+        </div>
+        <div class="bg-white shadow rounded-lg p-4">
+          <p class="text-sm text-gray-500">Órdenes Pendientes</p>
+          <p class="text-2xl font-semibold">7</p>
+        </div>
+        <div class="bg-white shadow rounded-lg p-4">
+          <p class="text-sm text-gray-500">Ingresos</p>
+          <p class="text-2xl font-semibold">$8,764</p>
+        </div>
+      </div>
+
+      <!-- Gráficas -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-white shadow rounded-lg p-4">
+          <h2 class="text-lg font-semibold mb-2">Gráfico de Ventas</h2>
+          <canvas id="lineChart" width="400" height="200"></canvas>
+        </div>
+        <div class="bg-white shadow rounded-lg p-4">
+          <h2 class="text-lg font-semibold mb-2">Distribución</h2>
+          <canvas id="pieChart" width="400" height="200"></canvas>
+        </div>
+      </div>
+
+      <!-- Secciones -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white shadow rounded-lg p-4">
+          <h3 class="text-lg font-semibold mb-2">Servicios Más Vendidos</h3>
+          <ul class="space-y-1 text-gray-700 text-sm">
+            <li>Lavado completo</li>
+            <li>Cambio de aceite</li>
+            <li>Revisión general</li>
           </ul>
-        </nav>
-        <div class="p-4 border-t border-[#900417] mt-auto">
-          <a href="/">
-            <button class="w-full rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-4 py-2">
-              Volver al sitio
-            </button>
-          </a>
         </div>
-      </aside>
-
-      <!-- Overlay móvil -->
-      <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
-
-      <!-- Contenido principal -->
-      <div class="flex-1">
-        <!-- Header -->
-        <header class="sticky top-0 z-30 flex h-16 items-center gap-4 border-b-[5px] border-[#900417] bg-white px-6">
-          <button id="sidebar-toggle" class="md:hidden text-[#1A4580]">
-            <i class="bx bx-menu text-2xl"></i>
-          </button>
-          <h1 class="flex-1 text-lg font-semibold text-[#1A4580]">Panel de Administración</h1>
-          <button class="rounded-[30px] border-[#900417] border-2 text-[#1A4580] hover:bg-[#48B9E1] hover:text-white hover:border-[#48B9E1] transition-colors px-4 py-2">
-            Mi Perfil
-          </button>
-        </header>
-
-        <!-- Main -->
-        <main class="flex-1 p-6">
-          <!-- Estadísticas y gráficos -->
-          <!-- (aquí va todo el markup de cards y canvas que pegaste) -->
-          <!-- ... -->
-        </main>
+        <div class="bg-white shadow rounded-lg p-4">
+          <h3 class="text-lg font-semibold mb-2">Clientes Recientes</h3>
+          <ul class="space-y-1 text-gray-700 text-sm">
+            <li>Juan Pérez</li>
+            <li>Lucía Gómez</li>
+            <li>Carlos Ruiz</li>
+          </ul>
+        </div>
+        <div class="bg-white shadow rounded-lg p-4">
+          <h3 class="text-lg font-semibold mb-2">Inventario Bajo</h3>
+          <ul class="space-y-1 text-gray-700 text-sm">
+            <li>Aceite 10W40</li>
+            <li>Filtro de aire</li>
+            <li>Shampoo de carrocería</li>
+          </ul>
+        </div>
       </div>
     </div>
+  </main>
 
-    <!-- Chart.js init -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Sales Chart
-        const salesCtx = document.getElementById("salesChart")?.getContext("2d");
-        if (salesCtx) {
-          new Chart(salesCtx, {
-            type: "line",
-            data: {
-              labels: ["8AM", "10AM", "12PM", "2PM", "4PM", "6PM"],
-              datasets: [{ label: "Ventas por Hora", data: [120,240,380,290,340,180], backgroundColor: "rgba(72,185,225,0.2)", borderColor: "#1A4580", borderWidth:2, tension:0.3, pointBackgroundColor:"#1A4580", pointRadius:4 }]
-            },
-            options: {
-              responsive:true, maintainAspectRatio:false,
-              scales: { y:{ beginAtZero:true, ticks:{ callback: v=>"$"+v } } },
-              plugins:{ tooltip:{ callbacks:{ label: ctx=>"$"+ctx.raw } } }
-            }
-          });
-        }
-        // Service Chart
-        const serviceCtx = document.getElementById("serviceChart")?.getContext("2d");
-        if (serviceCtx) {
-          new Chart(serviceCtx, {
-            type: "pie",
-            data: {
-              labels: ["Mecánica","Llantas","Baterías","Plumillas","GPS"],
-              datasets:[{ data:[35,25,20,10,10], backgroundColor:["#1A4580","#48B9E1","#900417","#8096B1","#2A6BB4"], borderWidth:1 }]
-            },
-            options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:"bottom" }, tooltip:{ callbacks:{ label: ctx=>ctx.label+": "+ctx.raw+"%" } } } }
-          });
+  <!-- Script funcionalidad -->
+  <script>
+    let lineChart;
+    let pieChart;
+
+    const dataSets = {
+      diario: {
+        labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'],
+        data: [12, 19, 3, 5, 2]
+      },
+      semanal: {
+        labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+        data: [40, 32, 45, 30]
+      },
+      mensual: {
+        labels: ['Ene', 'Feb', 'Mar', 'Abr'],
+        data: [100, 120, 90, 110]
+      }
+    };
+
+    function crearGraficos(tipo) {
+      const ctxLine = document.getElementById('lineChart').getContext('2d');
+      const ctxPie = document.getElementById('pieChart').getContext('2d');
+
+      if (lineChart) lineChart.destroy();
+      if (pieChart) pieChart.destroy();
+
+      lineChart = new Chart(ctxLine, {
+        type: 'line',
+        data: {
+          labels: dataSets[tipo].labels,
+          datasets: [{
+            label: 'Ventas',
+            data: dataSets[tipo].data,
+            backgroundColor: 'rgba(59,130,246,0.2)',
+            borderColor: 'rgba(59,130,246,1)',
+            borderWidth: 2,
+            fill: true,
+          }]
         }
       });
-    </script>
 
-    <!-- Toggle sidebar -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const sidebar = document.getElementById("sidebar");
-        const overlay = document.getElementById("sidebar-overlay");
-        const openBtn = document.getElementById("sidebar-toggle");
-        const closeBtn = document.getElementById("close-sidebar");
-
-        const open = () => { sidebar.classList.remove("-translate-x-full"); overlay.classList.remove("hidden"); document.body.classList.add("overflow-hidden"); };
-        const close = () => { sidebar.classList.add("-translate-x-full"); overlay.classList.add("hidden"); document.body.classList.remove("overflow-hidden"); };
-
-        openBtn?.addEventListener("click", open);
-        closeBtn?.addEventListener("click", close);
-        overlay?.addEventListener("click", close);
-        window.addEventListener("resize", () => { if (window.innerWidth >= 768) close(); });
+      pieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+          labels: ['Lavado', 'Aceite', 'Otros'],
+          datasets: [{
+            data: [40, 30, 30],
+            backgroundColor: ['#3b82f6', '#10b981', '#f59e0b']
+          }]
+        }
       });
-    </script>
-  </body>
+    }
+
+    function cambiarGrafico(tipo) {
+      crearGraficos(tipo);
+      document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('bg-blue-600', 'text-white'));
+      event.target.classList.add('bg-blue-600', 'text-white');
+    }
+
+    // Inicialización
+    window.onload = () => cambiarGrafico('diario');
+  </script>
+</body>
 </html>
